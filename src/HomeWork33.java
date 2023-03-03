@@ -50,22 +50,13 @@ public class HomeWork33 {
     Map<Month, Integer> monthDays = buildMonthsMap();
 
     if (monthDays.containsKey(monthToLook)) {
-      // "Месяц %s содержит %d дней"
+
       System.out.printf("The month '%s' contains %d days%n", month, monthDays.get(monthToLook));
 
       System.out.printf("The month '%s' has ordinal number %d%n", month, monthToLook.ordinal() + 1);
 
-      int nextMonthIndex = (monthToLook.ordinal() + 1);
-
-      Month nextMonth = Month.values()[nextMonthIndex % Month.values().length];
-
-      // enum, в отличие от String, можно сравнивать через ==, как числа
-
-      // "Следующий месяц - это '%s'"
-      System.out.printf("The next month is '%s'%n", nextMonth);
-      System.out.printf("It has %d days", monthDays.get(nextMonth));
     } else {
-      System.out.println("No such month: " + month); // Нет такого месяца
+      System.out.println("No such month: " + month);
     }
   }
 }
