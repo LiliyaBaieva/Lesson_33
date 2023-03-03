@@ -9,7 +9,7 @@ public class HomeWork33 {
 //  Добавьте ещё один enum, который будет описывать времена года (зима, лето, весна, осень)
 //  и укажет, к какому именно времени года относится выбранный месяц.
 
-  enum Month {
+  enum Month {  // список месяце
     JANUARY,
     FEBRUARY,
     MARCH,
@@ -24,14 +24,14 @@ public class HomeWork33 {
     DECEMBER,
   }
 
-  enum Season {
+  enum Season { // список сезонов
     WINTER,
     SPRING,
     SUMMER,
     AUTUMN,
   }
 
-  public static Map<Month, Season> bildMonthSeason() {
+  public static Map<Month, Season> bildMonthSeason() {  // создаём мапу какой месяц к какому сезону
     Map<Month, Season> monthSeasonMap = new HashMap<>();
     monthSeasonMap.put(Month.JANUARY, Season.WINTER);
     monthSeasonMap.put(Month.FEBRUARY, Season.WINTER);
@@ -53,13 +53,13 @@ public class HomeWork33 {
     BufferedReader inputReader = new BufferedReader(new InputStreamReader(System.in));
 
     System.out.println("Enter the month: ");
-    String month = inputReader.readLine();
+    String month = inputReader.readLine();  // считываем месяц введеный пользователем
 
     Month monthToLook = Month.valueOf(month.toUpperCase());
 
-    Map<Month, Season> monthSeason = bildMonthSeason();
+    Map<Month, Season> monthSeason = bildMonthSeason(); //карта месяце и сезонов
 
-    if (monthSeason.containsKey(monthToLook)) {
+    if (monthSeason.containsKey(monthToLook)) { // проверяем есть ли такой месяц, если хорошо выводим сезон
       System.out.printf("The month %s is in %s", month, monthSeason.get(monthToLook));
     } else {
       System.out.println("This month doesn't exist.");
