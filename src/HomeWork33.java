@@ -5,6 +5,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class HomeWork33 {
+//  Расширьте программу Task2MonthsEnums.
+//  Добавьте ещё один enum, который будет описывать времена года (зима, лето, весна, осень)
+//  и укажет, к какому именно времени года относится выбранный месяц.
+
   enum Month {
     JANUARY,
     FEBRUARY,
@@ -20,43 +24,46 @@ public class HomeWork33 {
     DECEMBER,
   }
 
-  public static Map<Month, Integer> buildMonthsMap() {
-    Map<Month, Integer> months = new HashMap<>();
+  enum Season {
+    WINTER,
+    SPRING,
+    SUMMER,
+    AUTUMN,
+  }
 
-    months.put(Month.JANUARY, 31);
-    months.put(Month.FEBRUARY, 28);
-    months.put(Month.MARCH, 31);
-    months.put(Month.APRIL, 30);
-    months.put(Month.MAY, 31);
-    months.put(Month.JUNE, 30);
-    months.put(Month.JULY, 31);
-    months.put(Month.AUGUST, 31);
-    months.put(Month.SEPTEMBER, 30);
-    months.put(Month.OCTOBER, 31);
-    months.put(Month.NOVEMBER, 30);
-    months.put(Month.DECEMBER, 31);
+  public static Map<Month, Season> bildMonthSeason() {
+    Map<Month, Season> monthSeasonMap = new HashMap<>();
+    monthSeasonMap.put(Month.JANUARY, Season.WINTER);
+    monthSeasonMap.put(Month.FEBRUARY, Season.WINTER);
+    monthSeasonMap.put(Month.MARCH, Season.SPRING);
+    monthSeasonMap.put(Month.APRIL, Season.SPRING);
+    monthSeasonMap.put(Month.MAY, Season.SPRING);
+    monthSeasonMap.put(Month.JUNE, Season.SUMMER);
+    monthSeasonMap.put(Month.JULY, Season.SUMMER);
+    monthSeasonMap.put(Month.AUGUST, Season.SUMMER);
+    monthSeasonMap.put(Month.SEPTEMBER, Season.AUTUMN);
+    monthSeasonMap.put(Month.OCTOBER, Season.AUTUMN);
+    monthSeasonMap.put(Month.NOVEMBER, Season.AUTUMN);
+    monthSeasonMap.put(Month.DECEMBER, Season.WINTER);
 
-    return months;
+    return monthSeasonMap;
   }
 
   public static void main(String[] args) throws IOException {
     BufferedReader inputReader = new BufferedReader(new InputStreamReader(System.in));
 
-    System.out.print("Enter the month: ");
+    System.out.println("Enter the month: ");
     String month = inputReader.readLine();
 
     Month monthToLook = Month.valueOf(month.toUpperCase());
 
-    Map<Month, Integer> monthDays = buildMonthsMap();
+    Map<Month, Season> monthSeason = bildMonthSeason();
 
-    if (monthDays.containsKey(monthToLook)) {
-
-      System.out.printf("The month '%s' contains %d days%n", month, monthDays.get(monthToLook));
-
-      System.out.printf("The month '%s' has ordinal number %d%n", month, monthToLook.ordinal() + 1);
-
+    if (monthSeason.containsKey(monthToLook)) {
+      System.out.printf("The month %s is in %s", month, monthSeason.get(monthToLook));
     } else {
-      System.out.println("No such month: " + month);
+      System.out.println("This month doesn't exist.");
     }
+
   }
 }
